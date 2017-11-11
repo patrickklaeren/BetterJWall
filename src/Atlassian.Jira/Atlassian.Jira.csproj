@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Authors>Federico Silva Armas</Authors>
+    <Description>Utilities to interact with Atlassian products. Contains LinqToJira provider for querying JIRA Issue tracker (http://www.atlassian.com/software/jira).</Description>
+    <PackageId>Atlassian.SDK</PackageId>
+    <PackageIconUrl>http://i1207.photobucket.com/albums/bb473/fsilva_armas/AtlassianIcon.png</PackageIconUrl>
+    <PackageProjectUrl>https://bitbucket.org/farmas/atlassian.net-sdk/wiki/Home</PackageProjectUrl>
+    <PackageReleaseNotes>
+      For change history, visit: https://bitbucket.org/farmas/atlassian.net-sdk/wiki/History
+    </PackageReleaseNotes>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageTags>Atlassian;JIRA;LINQ</PackageTags>
+    <PackageVersion>9.7.1-alpha1</PackageVersion>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <PackageReference Include="RestSharp" Version="106.0.1" />
+  </ItemGroup>
+
+</Project>

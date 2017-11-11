@@ -1,0 +1,21 @@
+﻿@model HomeViewModel
+@{
+    ViewData["Title"] = "Waiting for a Project";
+}
+
+<div>
+    <h1 style="font-weight:bold">BetterJWall</h1>
+    <h3>Lightweight, clutter free and straight to the point. It's just a better wallboard for your JIRA Server project.</h3>
+    <div style="margin-top: 20px;">
+
+        <p>Before using this project, please ensure you have configured the <code>appsettings.json</code> file where the configuration settings on how to access your JIRA instance should be held.</p>
+
+        <h3>Current configuration:</h3>
+
+        <pre><code>ServerEndpoint: @Model.JiraServerEndpoint</code></pre>
+        
+        <p>If the server endpoint listed above is incorrect, please reconfigure in the app settings.</p>
+        
+        <p>To begin, simply browse to <code>~/Wall/{PROJECTKEY}</code>, replacing project key with the key of your JIRA project.</p>
+    </div>
+</div>

@@ -1,0 +1,318 @@
+﻿@model WallViewModel
+@{
+    ViewData["Title"] = "Wall";
+}
+
+<style>
+    .kanban-centered {
+        position: relative;
+    }
+
+    .kanban-centered:before, .kanban-centered:after {
+        content: " ";
+        display: table;
+    }
+
+    .kanban-centered:after {
+        clear: both;
+    }
+
+    .kanban-centered:before, .kanban-centered:after {
+        content: " ";
+        display: table;
+    }
+
+    .kanban-centered:after {
+        clear: both;
+    }
+
+    .kanban-centered:before {
+        content: '';
+        position: absolute;
+        display: block;
+        width: 2px;
+    }
+
+    .kanban-centered .kanban-entry {
+        position: relative;
+        margin: 1px 0px;
+        clear: both;
+        border-radius: 4px;
+    }
+
+    .kanban-centered .kanban-entry:before, .kanban-centered .kanban-entry:after {
+        content: " ";
+        display: table;
+    }
+
+    .kanban-centered .kanban-entry:after {
+        clear: both;
+    }
+
+    .kanban-centered .kanban-entry:before, .kanban-centered .kanban-entry:after {
+        content: " ";
+        display: table;
+    }
+
+    .kanban-centered .kanban-entry:after {
+        clear: both;
+    }
+
+    .kanban-centered .kanban-entry.begin {
+        margin-bottom: 0;
+    }
+
+    .kanban-centered .kanban-entry.left-aligned {
+        float: left;
+    }
+
+    .kanban-centered .kanban-entry.left-aligned .kanban-entry-inner {
+        margin-left: 0;
+        margin-right: -18px;
+    }
+
+    .kanban-centered .kanban-entry.left-aligned .kanban-entry-inner .kanban-time {
+        left: auto;
+        right: -100px;
+        text-align: left;
+    }
+
+    .kanban-centered .kanban-entry.left-aligned .kanban-entry-inner .kanban-icon {
+        float: right;
+    }
+
+    .kanban-centered .kanban-entry.left-aligned .kanban-entry-inner .kanban-label {
+        margin-left: 0;
+        margin-right: 70px;
+    }
+
+    .kanban-centered .kanban-entry.left-aligned .kanban-entry-inner .kanban-label:after {
+        left: auto;
+        right: 0;
+        margin-left: 0;
+        margin-right: -9px;
+        -moz-transform: rotate(180deg);
+        -o-transform: rotate(180deg);
+        -webkit-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+        transform: rotate(180deg);
+    }
+
+    .kanban-centered .kanban-entry .kanban-entry-inner {
+        position: relative;
+    }
+
+    .kanban-centered .kanban-entry .kanban-entry-inner:before, .kanban-centered .kanban-entry .kanban-entry-inner:after {
+        content: " ";
+        display: table;
+    }
+
+    .kanban-centered .kanban-entry .kanban-entry-inner:after {
+        clear: both;
+    }
+
+    .kanban-centered .kanban-entry .kanban-entry-inner:before, .kanban-centered .kanban-entry .kanban-entry-inner:after {
+        content: " ";
+        display: table;
+    }
+
+    .kanban-centered .kanban-entry .kanban-entry-inner:after {
+        clear: both;
+    }
+
+    .kanban-centered .kanban-entry .kanban-entry-inner .kanban-time {
+        position: absolute;
+        left: -100px;
+        text-align: right;
+        padding: 10px;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+    .kanban-centered .kanban-entry .kanban-entry-inner .kanban-time > span {
+        display: block;
+    }
+
+    .kanban-centered .kanban-entry .kanban-entry-inner .kanban-time > span:first-child {
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    .kanban-centered .kanban-entry .kanban-entry-inner .kanban-time > span:last-child {
+        font-size: 12px;
+    }
+
+    .kanban-centered .kanban-entry .kanban-entry-inner .kanban-icon {
+        background: #fff;
+        color: #737881;
+        display: block;
+        width: 25px;
+        height: 25px;
+        -webkit-background-clip: padding-box;
+        -moz-background-clip: padding;
+        background-clip: padding-box;
+        -webkit-border-radius: 20px;
+        -moz-border-radius: 20px;
+        border-radius: 20px;
+        text-align: center;
+        -moz-box-shadow: 0 0 0 4px #f5f5f6;
+        -webkit-box-shadow: 0 0 0 4px #f5f5f6;
+        box-shadow: 0 0 0 4px #f5f5f6;
+        float: left;
+        margin-top: 6px;
+    }
+
+    .kanban-centered .kanban-entry .kanban-entry-inner .kanban-icon.bg-primary {
+        background-color: #303641;
+        color: #fff;
+    }
+
+    .kanban-centered .kanban-entry .kanban-entry-inner .kanban-icon.bg-secondary {
+        background-color: #ee4749;
+        color: #fff;
+    }
+
+    .kanban-centered .kanban-entry .kanban-entry-inner .kanban-icon.bg-success {
+        background-color: #00a651;
+        color: #fff;
+    }
+
+    .kanban-centered .kanban-entry .kanban-entry-inner .kanban-icon.bg-info {
+        background-color: #21a9e1;
+        color: #fff;
+    }
+
+    .kanban-centered .kanban-entry .kanban-entry-inner .kanban-icon.bg-warning {
+        background-color: #fad839;
+        color: #fff;
+    }
+
+    .kanban-centered .kanban-entry .kanban-entry-inner .kanban-icon.bg-danger {
+        background-color: #cc2424;
+        color: #fff;
+    }
+
+    .kanban-centered .kanban-entry .kanban-entry-inner .kanban-label {
+        position: relative;
+        background: #f5f5f6;
+        padding: 0.75em;
+        -webkit-background-clip: padding-box;
+        -moz-background-clip: padding;
+        background-clip: padding-box;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+    }
+
+    .kanban-centered .kanban-entry .kanban-entry-inner .kanban-label h2, .kanban-centered .kanban-entry .kanban-entry-inner .kanban-label p {
+        color: #424242;
+        font-family: "Noto Sans",sans-serif;
+        font-size: 12px;
+        margin: 0;
+        line-height: 1.428571429;
+    }
+
+    .kanban-centered .kanban-entry .kanban-entry-inner .kanban-label p + p {
+        margin-top: 15px;
+    }
+
+    .kanban-centered .kanban-entry .kanban-entry-inner .kanban-label h2 {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    .kanban-centered .kanban-entry .kanban-entry-inner .kanban-label h2 a {
+        color: #303641;
+    }
+
+    .kanban-centered .kanban-entry .kanban-entry-inner .kanban-label h2 span {
+        -webkit-opacity: .8;
+        -moz-opacity: .8;
+        opacity: .8;
+        -ms-filter: alpha(opacity=60);
+        filter: alpha(opacity=60);
+    }
+
+    footer {
+        display: none
+    }
+</style>
+
+<div>
+
+    @if (Model.IsInErrorState)
+    {
+        <h1 style="font-weight: bold">An error occurred while attempting to fetch the data.</h1>
+        <h4>@Model.ErrorMessage</h4>
+    }
+    else
+    {
+
+        <div class="row">
+            <!-- In Progress -->
+            <div class="col-sm-4">
+                <h1>IN PROGRESS (@Model.InProgressIssues.Count)</h1>
+                @foreach (var issue in Model.InProgressIssues)
+                {
+                    <div id="TODO" class="kanban-centered">
+                        <article class="kanban-entry">
+                            <div class="kanban-entry-inner">
+                                <div class="kanban-label">
+                                    <img style="margin-right: 5px;" src="@issue.IssueTypeIconUrl" />
+                                    <h2 style="display: inline; vertical-align: middle">
+                                        @issue.IssueKey<br/><span>@issue.Summary</span>
+                                    </h2>
+                                    <p style="margin-top: 5px;">@issue.Assignee</p>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                }
+            </div>
+
+
+            <!-- In Review -->
+            <div class="col-sm-4">
+                <h1>REVIEW (@Model.InReviewIssues.Count)</h1>
+                @foreach (var issue in Model.InReviewIssues)
+                {
+                    <div id="TODO" class="kanban-centered">
+                        <article class="kanban-entry">
+                            <div class="kanban-entry-inner">
+                                <div class="kanban-label">
+                                    <img style="margin-right: 5px;" src="@issue.IssueTypeIconUrl" />
+                                    <h2 style="display: inline; vertical-align: middle">
+                                        @issue.IssueKey<br /><span>@issue.Summary</span>
+                                    </h2>
+                                    <p style="margin-top: 5px;">@issue.Assignee</p>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                }
+            </div>
+
+            <!-- Done -->
+            <div class="col-sm-4">
+                <h1>DONE (@Model.DoneIssues.Count)</h1>
+                @foreach (var issue in Model.DoneIssues)
+                {
+                    <div id="TODO" class="kanban-centered">
+                        <article class="kanban-entry">
+                            <div class="kanban-entry-inner">
+                                <div class="kanban-label">
+                                    <img style="margin-right: 5px;" src="@issue.IssueTypeIconUrl" />
+                                    <h2 style="display: inline; vertical-align: middle">
+                                        @issue.IssueKey<br /><span>@issue.Summary</span>
+                                    </h2>
+                                    <p style="margin-top: 5px;">@issue.Assignee</p>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+</div>

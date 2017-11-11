@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2006
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetterJWall.Web", "BetterJWall.Web\BetterJWall.Web.csproj", "{B12B9108-5061-4641-8DC1-0D03BE367D0A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetterJWall.Common", "BetterJWall.Common\BetterJWall.Common.csproj", "{D506AEC9-8761-4765-A5B5-8BDDAE06821B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetterJWall.JIRABridge", "BetterJWall.JIRABridge\BetterJWall.JIRABridge.csproj", "{A2DBF44D-2F75-4360-A35F-528D2BB963BD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Atlassian.Jira", "Atlassian.Jira\Atlassian.Jira.csproj", "{7FD24C07-B311-4508-A0E8-31A81AD8D4B4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B12B9108-5061-4641-8DC1-0D03BE367D0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B12B9108-5061-4641-8DC1-0D03BE367D0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B12B9108-5061-4641-8DC1-0D03BE367D0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B12B9108-5061-4641-8DC1-0D03BE367D0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D506AEC9-8761-4765-A5B5-8BDDAE06821B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D506AEC9-8761-4765-A5B5-8BDDAE06821B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D506AEC9-8761-4765-A5B5-8BDDAE06821B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D506AEC9-8761-4765-A5B5-8BDDAE06821B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2DBF44D-2F75-4360-A35F-528D2BB963BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2DBF44D-2F75-4360-A35F-528D2BB963BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2DBF44D-2F75-4360-A35F-528D2BB963BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2DBF44D-2F75-4360-A35F-528D2BB963BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FD24C07-B311-4508-A0E8-31A81AD8D4B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FD24C07-B311-4508-A0E8-31A81AD8D4B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FD24C07-B311-4508-A0E8-31A81AD8D4B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FD24C07-B311-4508-A0E8-31A81AD8D4B4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0E8BDA5C-EABD-4475-B1AF-A9A0957D6E9E}
+	EndGlobalSection
+EndGlobal

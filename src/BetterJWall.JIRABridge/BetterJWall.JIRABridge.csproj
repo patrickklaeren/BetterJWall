@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="ptjkbtvo.41k~" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Atlassian.Jira\Atlassian.Jira.csproj" />
+    <ProjectReference Include="..\BetterJWall.Common\BetterJWall.Common.csproj" />
+  </ItemGroup>
+
+</Project>
