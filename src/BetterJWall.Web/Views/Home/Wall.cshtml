@@ -1,12 +1,17 @@
-﻿@model WallViewModel
+﻿@using BetterJWall.Common
+@model WallViewModel
 @{
     ViewData["Title"] = "Wall";
 }
 
 <style>
-    .kanban-centered {
-        position: relative;
+    body {
+        background:#424242
     }
+
+     .kanban-centered {
+         position: relative;
+     }
 
     .kanban-centered:before, .kanban-centered:after {
         content: " ";
@@ -227,11 +232,6 @@
     }
 
     .kanban-centered .kanban-entry .kanban-entry-inner .kanban-label h2 span {
-        -webkit-opacity: .8;
-        -moz-opacity: .8;
-        opacity: .8;
-        -ms-filter: alpha(opacity=60);
-        filter: alpha(opacity=60);
     }
 
     footer {
@@ -239,7 +239,7 @@
     }
 </style>
 
-<div>
+<div style="padding-left: 30px; padding-right: 30px;">
 
     @if (Model.IsInErrorState)
     {
@@ -249,10 +249,9 @@
     else
     {
 
-        <div class="row">
             <!-- In Progress -->
             <div class="col-sm-4">
-                <h1>IN PROGRESS (@Model.InProgressIssues.Count)</h1>
+                <h1 style="color:white">IN PROGRESS (@Model.InProgressIssues.Count)</h1>
                 @foreach (var issue in Model.InProgressIssues)
                 {
                     <div id="TODO" class="kanban-centered">
@@ -260,8 +259,8 @@
                             <div class="kanban-entry-inner">
                                 <div class="kanban-label">
                                     <img style="margin-right: 5px;" src="@issue.IssueTypeIconUrl" />
-                                    <h2 style="display: inline; vertical-align: middle">
-                                        @issue.IssueKey<br/><span>@issue.Summary</span>
+                                    <h2 style="display: inline; vertical-align: middle; font-weight:bold">
+                                        <a href="@UrlBuilder.BuildJira(Model.ServerEndpoint, issue.IssueKey)">@issue.IssueKey</a><br/><span>@issue.Summary</span>
                                     </h2>
                                     <p style="margin-top: 5px;">@issue.Assignee</p>
                                 </div>
@@ -274,7 +273,7 @@
 
             <!-- In Review -->
             <div class="col-sm-4">
-                <h1>REVIEW (@Model.InReviewIssues.Count)</h1>
+                <h1 style="color:white">REVIEW (@Model.InReviewIssues.Count)</h1>
                 @foreach (var issue in Model.InReviewIssues)
                 {
                     <div id="TODO" class="kanban-centered">
@@ -282,8 +281,8 @@
                             <div class="kanban-entry-inner">
                                 <div class="kanban-label">
                                     <img style="margin-right: 5px;" src="@issue.IssueTypeIconUrl" />
-                                    <h2 style="display: inline; vertical-align: middle">
-                                        @issue.IssueKey<br /><span>@issue.Summary</span>
+                                    <h2 style="display: inline; vertical-align: middle; font-weight:bold">
+                                        <a href="@UrlBuilder.BuildJira(Model.ServerEndpoint, issue.IssueKey)">@issue.IssueKey</a><br /><span>@issue.Summary</span>
                                     </h2>
                                     <p style="margin-top: 5px;">@issue.Assignee</p>
                                 </div>
@@ -295,7 +294,7 @@
 
             <!-- Done -->
             <div class="col-sm-4">
-                <h1>DONE (@Model.DoneIssues.Count)</h1>
+                <h1 style="color:white">DONE (@Model.DoneIssues.Count)</h1>
                 @foreach (var issue in Model.DoneIssues)
                 {
                     <div id="TODO" class="kanban-centered">
@@ -303,8 +302,8 @@
                             <div class="kanban-entry-inner">
                                 <div class="kanban-label">
                                     <img style="margin-right: 5px;" src="@issue.IssueTypeIconUrl" />
-                                    <h2 style="display: inline; vertical-align: middle">
-                                        @issue.IssueKey<br /><span>@issue.Summary</span>
+                                    <h2 style="display: inline; vertical-align: middle; font-weight:bold">
+                                        <a href="@UrlBuilder.BuildJira(Model.ServerEndpoint, issue.IssueKey)">@issue.IssueKey</a><br /><span>@issue.Summary</span>
                                     </h2>
                                     <p style="margin-top: 5px;">@issue.Assignee</p>
                                 </div>
@@ -313,6 +312,5 @@
                     </div>
                 }
             </div>
-        </div>
     }
 </div>

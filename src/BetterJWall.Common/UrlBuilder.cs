@@ -10,6 +10,6 @@ namespace BetterJWall.Common
             => baseUrl + "/" + parameter;
 
         public static string BuildJira(string baseUrl, string parameter)
-            => Build(baseUrl + "/browse/", parameter);
+            => Build(baseUrl + "/browse", parameter);
     }
 }

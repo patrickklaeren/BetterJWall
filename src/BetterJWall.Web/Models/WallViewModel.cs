@@ -15,12 +15,15 @@ namespace BetterJWall.Web.Models
             ErrorMessage = errorMessage;
         }
 
-        public WallViewModel(string projectKey, IEnumerable<JiraCaseDto> jiraIssues)
+        public WallViewModel(string serverEndpoint, string projectKey, IEnumerable<JiraCaseDto> jiraIssues)
         {
             ProjectKey = projectKey;
             LastDataFetch = DateTime.Now;
             _issues = jiraIssues.Select(a => new IssueViewModel(a));
+            ServerEndpoint = serverEndpoint;
         }
+
+        public string ServerEndpoint { get; }
 
         public bool IsInErrorState => string.IsNullOrWhiteSpace(ErrorMessage) == false;
 

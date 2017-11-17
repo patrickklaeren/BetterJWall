@@ -45,7 +45,7 @@ namespace BetterJWall.JIRABridge.Services.Issues
 
         public IEnumerable<JiraCaseDto> GetInProgressForProject([NotNull] string projectKey)
         {
-            var existentIssueKeys = new List<string>();
+            var existentIssueKeys = new List<ComparableString>();
             var returned = new List<Issue>();
             var isOver = true;
 
@@ -64,12 +64,12 @@ namespace BetterJWall.JIRABridge.Services.Issues
 
                 queryable = existentIssueKeys
                     .Aggregate(queryable, (current, existentIssueKey) =>
-                        current.Where(x => x.JiraIdentifier != existentIssueKey));
+                        current.Where(x => x.Key != existentIssueKey));
 
                 var queriedIssues = queryable.ToList();
 
                 // Add the obtained issues to the existent keys
-                existentIssueKeys.AddRange(queriedIssues.Select(x => x.JiraIdentifier));
+                existentIssueKeys.AddRange(queriedIssues.Select(x => x.Key));
 
                 returned.AddRange(queriedIssues);
 
@@ -84,7 +84,7 @@ namespace BetterJWall.JIRABridge.Services.Issues
 
         public IEnumerable<JiraCaseDto> GetInReviewForProject([NotNull] string projectKey)
         {
-            var existentIssueKeys = new List<string>();
+            var existentIssueKeys = new List<ComparableString>();
             var returned = new List<Issue>();
             var isOver = true;
 
@@ -103,12 +103,12 @@ namespace BetterJWall.JIRABridge.Services.Issues
 
                 queryable = existentIssueKeys
                     .Aggregate(queryable, (current, existentIssueKey) =>
-                        current.Where(x => x.JiraIdentifier != existentIssueKey));
+                        current.Where(x => x.Key != existentIssueKey));
 
                 var queriedIssues = queryable.ToList();
 
                 // Add the obtained issues to the existent keys
-                existentIssueKeys.AddRange(queriedIssues.Select(x => x.JiraIdentifier));
+                existentIssueKeys.AddRange(queriedIssues.Select(x => x.Key));
 
                 returned.AddRange(queriedIssues);
 
@@ -123,17 +123,9 @@ namespace BetterJWall.JIRABridge.Services.Issues
 
         public IEnumerable<JiraCaseDto> GetDoneForProject([NotNull] string projectKey)
         {
-            const int DEFAULT_DAYS_TO_LOOK_BACK = 1;
-            const int DAYS_TO_LOOK_BACK_ON_WEEKEND = 3;
+            var lookupFrom = _dateTimeFunctions.Date();
 
-            var daysToLookBack = DEFAULT_DAYS_TO_LOOK_BACK;
-
-            if (_dateTimeFunctions.Date().DayOfWeek == DayOfWeek.Monday)
-                daysToLookBack = DAYS_TO_LOOK_BACK_ON_WEEKEND;
-
-            var lookupFrom = _dateTimeFunctions.Date().AddDays(-daysToLookBack);
-
-            var existentIssueKeys = new List<string>();
+            var existentIssueKeys = new List<ComparableString>();
             var returned = new List<Issue>();
             var isOver = true;
 
@@ -154,12 +146,12 @@ namespace BetterJWall.JIRABridge.Services.Issues
 
                 queryable = existentIssueKeys
                     .Aggregate(queryable, (current, existentIssueKey) =>
-                        current.Where(x => x.JiraIdentifier != existentIssueKey));
+                        current.Where(x => x.Key != existentIssueKey));
 
                 var queriedIssues = queryable.ToList();
 
                 // Add the obtained issues to the existent keys
-                existentIssueKeys.AddRange(queriedIssues.Select(x => x.JiraIdentifier));
+                existentIssueKeys.AddRange(queriedIssues.Select(x => x.Key));
 
                 returned.AddRange(queriedIssues);
 

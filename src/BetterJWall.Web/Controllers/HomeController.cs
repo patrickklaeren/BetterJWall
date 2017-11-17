@@ -31,6 +31,8 @@ namespace BetterJWall.Web.Controllers
         [Route("Wall/{projectKey}")]
         public IActionResult Wall(string projectKey)
         {
+            var serverEndpoint = _configurationHelper.JiraServerEndpoint;
+
             WallViewModel model;
 
             try
@@ -41,7 +43,7 @@ namespace BetterJWall.Web.Controllers
 
                 var allIssues = inProgressIssues.Concat(inReviewIssues).Concat(doneIssues);
 
-                model = new WallViewModel(projectKey, allIssues);
+                model = new WallViewModel(serverEndpoint, projectKey, allIssues);
             }
             catch (Exception e)
             {
